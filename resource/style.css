@@ -1,0 +1,250 @@
+    /* Mengatur font Nunito secara global */
+        body {
+            font-family: 'Nunito', sans-serif; /* Menggunakan Nunito sebagai font utama */
+    /* Latar belakang gradasi gelap yang lebih lembut dan keungu-biruan */
+            background: linear-gradient(to right bottom, #4A3A5A, #3A4A5A);
+            color: #e2e8f0; /* Warna teks utama untuk Dark Mode (default) */
+            min-height: 100vh; /* Memastikan halaman mengisi tinggi viewport */
+            display: flex; /* Menggunakan flexbox untuk layout */
+            flex-direction: column; /* Mengatur arah flexbox ke kolom */
+            justify-content: flex-start; /* Konten dimulai dari atas */
+            align-items: center; /* Menengahkan konten secara horizontal */
+            padding-top: 2rem; /* Padding atas yang lebih rapat */
+            padding-bottom: 1rem; /* Padding bawah */
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: hidden; /* Mencegah scroll horizontal karena bunga */
+
+        }
+        .main-content {
+            flex-grow: 0; /* Tidak lagi mengambil sisa ruang, agar bisa diatur posisinya dari atas */
+            width: 100%;
+            max-width: 4xl;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Konten di dalamnya dimulai dari atas */
+            align-items: center;
+            position: relative; /* Penting untuk z-index */
+            z-index: 2; /* Pastikan konten utama di atas bunga */
+        }
+
+    /* Styling khusus untuk overlay teks pada gambar */
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Overlay gelap transparan lebih lembut */
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Mengatur teks ke bagian bawah */
+            opacity: 1; /* Selalu terlihat */
+            transition: background-color 0.3s ease; /* Transisi untuk hover */
+            border-radius: 2rem; /* Sudut membulat lebih besar */
+        }
+        .image-overlay:hover {
+            background-color: rgba(0, 0, 0, 0.4); /* Sedikit lebih gelap saat hover */
+        }
+
+
+        /* Styling untuk teks nama di dalam foto (Luna & Yuna) */
+        .image-overlay span {
+            font-family: 'Bebas Neue', sans-serif; /* Menggunakan font Bebas Neue */
+            background-image: linear-gradient(to top, rgba(255, 182, 193, 0.8), rgba(255, 255, 255, 0.8)); /* Gradasi pastel pink ke putih */
+            -webkit-background-clip: text; /* Menerapkan gradasi ke teks */
+            background-clip: text; /* Menerapkan gradasi ke teks */
+            color: transparent; /* Membuat teks transparan agar gradasi terlihat */
+        }
+
+        /* Styling untuk mode fullscreen gambar */
+        .fullscreen-image {
+            position: fixed; /* Posisi tetap di viewport */
+            top: 0;
+            left: 0;
+            width: 100vw; /* Lebar penuh viewport */
+            height: 100vh; /* Tinggi penuh viewport */
+            background-color: rgba(0, 0, 0, 0.8); /* Latar belakang gelap transparan */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Pastikan di atas semua elemen lain */
+            cursor: zoom-out; /* Kursor berubah saat di mode fullscreen */
+        }
+
+        .fullscreen-image img {
+            max-width: 90%; /* Maksimal lebar gambar */
+            max-height: 90%; /* Maksimal tinggi gambar */
+            object-fit: contain; /* Memastikan gambar pas di dalam area tanpa terpotong */
+            border-radius: 2rem; /* Sudut membulat lebih besar */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Bayangan untuk gambar fullscreen */
+        }
+
+        /* Styling untuk pemutar musik - sekarang tersembunyi */
+        .music-player-container {
+            display: none;
+        }
+
+        /* Animasi glowing breathing untuk frame Luna (pink) */
+        @keyframes glowing-breathing-luna {
+            0% {
+                box-shadow: 0 0 8px #ff99cc, 0 0 16px #ff99cc, 0 0 24px #ff99cc; /* Pink muda lebih lembut */
+            }
+            50% {
+                box-shadow: 0 0 20px #ff66b2, 0 0 35px #ff66b2, 0 0 50px #ff66b2; /* Pink lebih terang dan menyebar */
+            }
+            100% {
+                box-shadow: 0 0 8px #ff99cc, 0 0 16px #ff99cc, 0 0 24px #ff99cc; /* Kembali ke pink muda */
+            }
+        }
+
+    /* Animasi glowing breathing untuk frame Yuna (biru muda) */
+        @keyframes glowing-breathing-yuna {
+            0% {
+                box-shadow: 0 0 8px #aaddff, 0 0 16px #aaddff, 0 0 24px #aaddff; /* Biru muda lebih lembut */
+                }
+            50% {
+                box-shadow: 0 0 20px #66ccff, 0 0 35px #66ccff, 0 0 50px #66ccff; /* Biru lebih terang dan menyebar */
+                }
+            100% {
+                box-shadow: 0 0 8px #aaddff, 0 0 16px #aaddff, 0 0 24px #aaddff; /* Kembali ke biru muda */
+            }
+        }
+
+        /* Terapkan animasi pada container gambar Luna */
+        #luna-card-image-container {
+            animation: glowing-breathing-luna 2.5s infinite alternate; /* Durasi sedikit lebih panjang */
+            border-radius: 2rem; /* Pastikan border-radius konsisten dengan card */
+        }
+
+        /* Terapkan animasi pada container gambar Yuna */
+        #yuna-card-image-container {
+            animation: glowing-breathing-yuna 2.5s infinite alternate; /* Durasi sedikit lebih panjang */
+            border-radius: 2rem; /* Pastikan border-radius konsisten dengan card */
+        }
+
+        /* Styling untuk tombol mute/unmute */
+        #mute-toggle-button {
+            margin-top: 1.5rem; /* Jarak dari konten di atasnya (lebih rapat) */
+            margin-bottom: 1.5rem; /* Jarak ke bawah */
+            padding: 0.75rem 1.5rem;
+            background-color: #9370DB; /* Ungu sedang yang lebih soft */
+            color: white;
+            font-weight: bold;
+            border-radius: 9999px; /* rounded-full */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Bayangan lebih lembut dan menyebar */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Menengahkan ikon */
+            width: 65px; /* Lebar tetap untuk tombol bulat lebih besar */
+            height: 65px; /* Tinggi tetap untuk tombol bulat lebih besar */
+            font-size: 2.2rem; /* Ukuran ikon lebih besar */
+        }
+        #mute-toggle-button:hover {
+            background-color: #8A2BE2; /* Ungu lebih gelap saat hover */
+            transform: scale(1.05); /* Efek membesar saat hover */
+        }
+        #mute-toggle-button:active {
+            transform: scale(0.95); /* Efek mengecil saat aktif */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan lebih kecil saat aktif */
+        }
+
+        /* Styling untuk card profil */
+        .profile-card {
+            background-color: rgba(60, 70, 90, 0.7); /* Warna latar belakang card yang lebih lembut dan sedikit transparan */
+            border-radius: 2rem; /* rounded-4xl */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam dan lembut */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Border tipis untuk definisi */
+        }
+
+        /* Gaya untuk animasi typing dan deleting */
+        .typing-effect {
+            overflow: hidden; /* Sembunyikan teks yang meluap */
+            white-space: nowrap; /* Jangan biarkan teks pindah baris */
+            max-width: 12ch; /* Lebar maksimum untuk "Kenalan Yuk!" (12 karakter) */
+            display: inline-block; /* Penting untuk max-width dan centering */
+            margin: 0 auto; /* Menengahkan teks yang diketik */
+        /* Animasi typing-deleting: 8 detik untuk satu siklus penuh (type, pause, delete, pause) */
+        /* steps(24) = 12 langkah untuk mengetik, 12 langkah untuk menghapus */
+            animation:
+                typing-deleting 8s steps(24) infinite,
+                blink-caret .75s step-end infinite; /* Animasi kursor berkedip */
+        }
+        /* Keyframes untuk animasi typing dan deleting */
+        @keyframes typing-deleting {
+            0% { width: 0; } /* Mulai kosong */
+            37.5% { width: 12ch; } /* Ketik penuh (12 karakter) */
+            50% { width: 12ch; } /* Berhenti sejenak dengan teks penuh */
+            87.5% { width: 0; } /* Hapus teks */
+            100% { width: 0; } /* Berhenti sejenak dengan teks kosong */
+        }
+        /* Keyframes untuk animasi kursor berkedip */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white; } /* Warna kursor */
+        }
+        /* Untuk memastikan kursor typing terlihat */
+        h1 .typing-effect {
+            border-right: .15em solid white; /* Kursor typing */
+        }
+        /* Kontainer untuk bunga-bunga berjatuhan */
+        #falling-items-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden; /* Penting agar item tidak terlihat di luar area viewport */
+            pointer-events: none; /* Agar tidak menghalangi interaksi dengan elemen di bawahnya */
+            z-index: 1; /* Di bawah konten utama */
+        }
+        .falling-item {
+            position: absolute;
+            display: block;
+            opacity: 0.8;
+            user-select: none; /* Agar tidak bisa diseleksi teksnya */
+            white-space: nowrap; /* Agar emoji tidak pecah */
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        /* Keyframes untuk animasi item berjatuhan */
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(110vh) translateX(var(--item-drift, 0vw)) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        /* Styling untuk ikon sosial */
+        .social-icons {
+            display: flex;
+            justify-content: center; /* Menengahkan ikon secara horizontal */
+            gap: 1.25rem; /* Jarak antar ikon yang lebih renggang (sekitar 20px) */
+            margin-top: auto; /* Mendorong ikon ke bawah dalam flex container */
+            padding-top: 1rem; /* Jarak di atas ikon agar tidak terlalu mepet dengan bio */
+        }
+        .social-icons a {
+            display: flex; /* Untuk menengahkan ikon di dalam link */
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1); /* Efek zoom saat hover */
+        }
+        .social-icons img {
+            width: 28px; /* Ukuran ikon sedikit lebih besar */
+            height: 28px;
+            filter: brightness(0) invert(1); /* Untuk membuat ikon putih di background gelap */
+        }
+        /* CSS untuk transisi gambar slider: sekarang termasuk transform */
+        .fade-image {
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Transisi opacity dan transform selama 1 detik */
+            transform: scale(1); /* Skala default */
+        }

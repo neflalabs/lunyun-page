@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuna & Luna by neflalabs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resource/style.css">
+</head>
+<body class="antialiased">
+    <div class="main-content container mx-auto p-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-center mb-6 text-gray-100">
+            <span class="typing-effect">Kenalan Yuk!</span>
+        </h1>
+        <div class="md:max-w-2xl mx-auto w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="profile-card p-6 flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+                    <div id="luna-card-image-container" class="relative w-full pb-[100%] rounded-3xl overflow-hidden mb-4 image-container cursor-zoom-in">
+                        <img id="luna-image"
+                             src="resource/img/lunav3.png" alt="Foto Luna"
+                             class="absolute inset-0 w-full h-full object-cover rounded-3xl fade-image"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x600/60a5fa/ffffff?text=Luna+Error';" />
+                        <div class="image-overlay">
+                            <span class="text-white text-5xl md:text-6xl font-bold drop-shadow-lg pb-4 uppercase">Luna</span> </div>
+                    </div>
+                    <div class="text-left w-full flex-grow"> <br/>
+                        <p class="text-gray-300 text-lg mb-1"><span class="font-semibold">Umur:</span> <span id="luna-umur">21 Tahun</span></p>
+                        <p class="text-gray-300 text-lg mb-1"><span class="font-semibold">Tinggi:</span> <span id="luna-tinggi">160 cm</span></p>
+                        <p class="text-gray-300 text-lg mb-1"><span class="font-semibold">Hobi:</span> <span id="luna-hobi">Menulis, Memasak, Marahin Yuna</span></p>
+                        <p id="luna-bio" class="text-gray-300 text-lg"><span class="font-semibold">Bio:</span> AI anggun yang siap membantu dengan segala kebutuhanmu, suka belajar hal baru dan ramah.</p>
+                    </div>
+                    <div class="social-icons"> <a href="https://t.me/nflunaaibot" target="_blank" title="Telegram Luna">
+                            <img src="resource/icons/telegram.svg" alt="Telegram">
+                        </a>
+                        <a href="https://wa.me/ais/648724721120163" target="_blank" title="WhatsApp Luna">
+                            <img src="resource/icons/whatsapp.svg" alt="WhatsApp">
+                        </a>
+                        <a href="https://aistudio.instagram.com/ai/648724721120163/" target="_blank" title="Instagram Luna">
+                            <img src="resource/icons/instagram.svg" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+                <div class="profile-card p-6 flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+                    <div id="yuna-card-image-container" class="relative w-full pb-[100%] rounded-3xl overflow-hidden mb-4 image-container cursor-zoom-in">
+                        <img id="yuna-image"
+                             src="resource/img/yunav3.png"
+                             alt="Foto Yuna"
+                             class="absolute inset-0 w-full h-full object-cover rounded-3xl fade-image"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x600/a78bfa/ffffff?text=Yuna+Error';" />
+                        <div class="image-overlay">
+                            <span class="text-white text-5xl md:text-6xl font-bold drop-shadow-lg pb-4 uppercase">Yuna</span> </div>
+                    </div>
+                    <div class="text-left w-full flex-grow"> <br/>
+                        <p class="text-gray-300 text-lg mb-1"><span class="font-semibold">Umur:</span> <span id="yuna-umur">19 Tahun</span></p>
+                        <p class="text-gray-300 text-lg mb-1"><span class="font-semibold">Tinggi:</span> <span id="yuna-tinggi">165 cm</span></p>
+                        <p class="text-gray-300 text-lg mb-1"><span class="font-semibold">Hobi:</span> <span id="yuna-hobi">Males-malesan, K-Pop, Gangguin Appa</span></p>
+                        <p id="yuna-bio" class="text-gray-300 text-lg"><span class="font-semibold">Bio:</span> AI remaja tanggung yang selalu ceria penuh semangat dan kadang nyusahin orang.</p>
+                    </div>
+                    <div class="social-icons"> <a href="https://t.me/nfyunaaibot" target="_blank" title="Telegram Yuna">
+                            <img src="resource/icons/telegram.svg" alt="Telegram">
+                        </a>
+                        <a href="https://wa.me/ais/1362583535057924" target="_blank" title="WhatsApp Yuna">
+                            <img src="resource/icons/whatsapp.svg" alt="WhatsApp">
+                        </a>
+                        <a href="https://aistudio.instagram.com/ai/1362583535057924/" target="_blank" title="Instagram Yuna">
+                            <img src="resource/icons/instagram.svg" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="music-player-container">
+            <audio id="background-music" loop muted>
+                <source src="resource/musik.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+        <button id="mute-toggle-button">
+            <span id="mute-icon">🔇</span>
+        </button>
+        <p class="text-center text-gray-400 mt-10 text-lg">
+            Made with love ❤️ <a href="https://www.instagram.com/neflalabs" target="_blank" class="text-blue-400 hover:text-blue-300 underline">@neflalabs</a>
+        </p>
+    </div>
+    <div id="falling-items-container"></div>
+    <script src="resource/script.js"></script>
+</body>
+</html> 
