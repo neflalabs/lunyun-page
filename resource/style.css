@@ -2,7 +2,7 @@
         body {
             font-family: 'Nunito', sans-serif; /* Menggunakan Nunito sebagai font utama */
     /* Latar belakang gradasi gelap yang lebih lembut dan keungu-biruan */
-            background: linear-gradient(to right bottom, #4A3A5A, #3A4A5A);
+            background: linear-gradient(to right bottom, #613d5f, #3A4A5A);
             color: #e2e8f0; /* Warna teks utama untuk Dark Mode (default) */
             min-height: 100vh; /* Memastikan halaman mengisi tinggi viewport */
             display: flex; /* Menggunakan flexbox untuk layout */
@@ -64,7 +64,7 @@
             left: 0;
             width: 100vw; /* Lebar penuh viewport */
             height: 100vh; /* Tinggi penuh viewport */
-            background-color: rgba(0, 0, 0, 0.8); /* Latar belakang gelap transparan */
+            background-color: rgba(0, 0, 0, 0.753); /* Latar belakang gelap transparan */
             display: flex;
             justify-content: center;
             align-items: center;

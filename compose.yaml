@@ -3,5 +3,5 @@ services:
     container_name: lunyun
     build: .
     ports:
-      - "88:80"
+      - "87:80"
     restart: unless-stopped

@@ -91,71 +91,99 @@ setInterval(changeYunaImage, 5000);
   });
 
 // --- Fitur Pemutar Musik ---
-const backgroundMusic = document.getElementById('background-music');
-const muteToggleButton = document.getElementById('mute-toggle-button');
-const muteIcon = document.getElementById('mute-icon');
+let songs = [];
+let currentSong = -1;
 
-// Set status awal musik: muted dan paused
-backgroundMusic.muted = true;
-backgroundMusic.pause(); // Pastikan paused di awal
+window.addEventListener('DOMContentLoaded', () => {
+    const prevBtn = document.getElementById('prev-song-btn');
+    const nextBtn = document.getElementById('next-song-btn');
+    const muteToggleButton = document.getElementById('mute-toggle-button');
+    const muteIcon = document.getElementById('mute-icon');
+    // Tambahkan baris berikut untuk mengambil elemen audio dan source
+    const audio = document.getElementById('background-music');
+    const source = document.getElementById('audio-source');
 
-// Fungsi untuk memulai musik (dipanggil saat interaksi pertama)
+    function loadSong(index) {
+        if (!songs[index]) return;
+        source.src = songs[index].src;
+        audio.load();
+    }
+
+    function playSong(index) {
+        currentSong = index;
+        loadSong(currentSong);
+        if (!audio.muted) audio.play();
+    }
+
+    function nextSong() {
+        if (songs.length === 0) return;
+        currentSong = (currentSong + 1) % songs.length;
+        playSong(currentSong);
+    }
+
+    function prevSong() {
+        if (songs.length === 0) return;
+        currentSong = (currentSong - 1 + songs.length) % songs.length;
+        playSong(currentSong);
+    }
+
+    // Fetch songs.json and load the first song
+    fetch('resource/songs.json')
+        .then(res => res.json())
+        .then(data => {
+            songs = data;
+            playSong(0);
+        });
+
+    if (prevBtn) prevBtn.addEventListener('click', prevSong);
+    if (nextBtn) nextBtn.addEventListener('click', nextSong);
+
+    // --- Mute/Unmute logic ---
+    audio.muted = true;
+    audio.pause();
+
     function initializeMusicOnFirstInteraction() {
-      if (backgroundMusic.paused && backgroundMusic.muted) {
-          backgroundMusic.muted = false; // Unmute
-          backgroundMusic.play().then(() => {
-              console.log("Musik berhasil diputar setelah interaksi pengguna.");
-              muteIcon.textContent = '🔊'; // Ganti ikon ke unmute
-              muteToggleButton.style.backgroundColor = '#10b981'; // Warna hijau saat play
-          }).catch(error => {
-              console.log("Gagal memutar musik setelah interaksi pertama:", error);
-              // Jika gagal play, kembalikan ke muted dan pause
-              backgroundMusic.muted = true;
-              backgroundMusic.pause();
-              muteIcon.textContent = '🔇';
-              muteToggleButton.style.backgroundColor = '#6b7280'; // Kembali ke abu-abu
-          });
-      }
-// Hapus listener setelah interaksi pertama, agar tidak mengganggu klik lainnya
-    document.body.removeEventListener('click', initializeMusicOnFirstInteraction);
-  }
-  
-// Tambahkan event listener ke seluruh body untuk mendeteksi klik pertama
-document.body.addEventListener('click', initializeMusicOnFirstInteraction);
+        if (audio.paused && audio.muted) {
+            audio.muted = false;
+            audio.play().then(() => {
+                muteIcon.textContent = '🔊';
+                muteToggleButton.style.backgroundColor = '#10b981';
+            }).catch(() => {
+                audio.muted = true;
+                audio.pause();
+                muteIcon.textContent = '🔇';
+                muteToggleButton.style.backgroundColor = '#6b7280';
+            });
+        }
+        document.body.removeEventListener('click', initializeMusicOnFirstInteraction);
+    }
+    document.body.addEventListener('click', initializeMusicOnFirstInteraction);
 
-// Event listener untuk tombol mute/unmute
-muteToggleButton.addEventListener('click', () => {
-    if (backgroundMusic.muted) {
-    
-// Jika muted, coba unmute dan play
-        backgroundMusic.muted = false;
-        backgroundMusic.play().then(() => {
-            muteIcon.textContent = '🔊'; // Ikon unmute
-            muteToggleButton.style.backgroundColor = '#10b981'; // Warna hijau saat play
-          }).catch(error => {
-            console.log("Gagal memutar musik setelah unmute:", error);
-
-// Jika gagal play, kembalikan ke muted
-            backgroundMusic.muted = true;
+    muteToggleButton.addEventListener('click', () => {
+        if (audio.muted) {
+            audio.muted = false;
+            audio.play().then(() => {
+                muteIcon.textContent = '🔊';
+                muteToggleButton.style.backgroundColor = '#10b981';
+            }).catch(() => {
+                audio.muted = true;
+                muteIcon.textContent = '🔇';
+                muteToggleButton.style.backgroundColor = '#6b7280';
+            });
+        } else {
+            audio.muted = true;
+            audio.pause();
             muteIcon.textContent = '🔇';
-            muteToggleButton.style.backgroundColor = '#6b7280'; // Kembali ke abu-abu
-          });
-      } else {
+            muteToggleButton.style.backgroundColor = '#6b7280';
+        }
+    });
 
-// Jika tidak muted, mute dan pause
-            backgroundMusic.muted = true;
-            backgroundMusic.pause();
-            muteIcon.textContent = '🔇'; // Ikon mute
-            muteToggleButton.style.backgroundColor = '#6b7280'; // Kembali ke abu-abu
-      }
-  });
-
-// Update tombol jika musik selesai (misal jika loop tidak berfungsi atau dihentikan manual)
-    backgroundMusic.addEventListener('ended', () => {
-        muteIcon.textContent = '🔇'; // Kembali ke ikon mute
+    audio.addEventListener('ended', () => {
+        muteIcon.textContent = '🔇';
         muteToggleButton.style.backgroundColor = '#6b7280';
-        backgroundMusic.muted = true; // Pastikan muted saat selesai
-  });
+        audio.muted = true;
+    });
+});
 
 // --- Animasi Item Berjatuhan (Bunga dan Es Krim) ---
   const fallingItemsContainer = document.getElementById('falling-items-container');

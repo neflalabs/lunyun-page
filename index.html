@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuna & Luna by neflalabs</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="resource/style.css">
@@ -17,7 +17,7 @@
         <div class="md:max-w-2xl mx-auto w-full">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="profile-card p-6 flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
-                    <div id="luna-card-image-container" class="relative w-full pb-[100%] rounded-3xl overflow-hidden mb-4 image-container cursor-zoom-in">
+                    <div id="luna-card-image-container" class="relative w-full pb-[100%] rounded-3xl overflow-hidden mb-4 image-container cursor-zoom-out">
                         <img id="luna-image"
                              src="resource/img/lunav3.png" alt="Foto Luna"
                              class="absolute inset-0 w-full h-full object-cover rounded-3xl fade-image"
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="profile-card p-6 flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
-                    <div id="yuna-card-image-container" class="relative w-full pb-[100%] rounded-3xl overflow-hidden mb-4 image-container cursor-zoom-in">
+                    <div id="yuna-card-image-container" class="relative w-full pb-[100%] rounded-3xl overflow-hidden mb-4 image-container cursor-zoom-out">
                         <img id="yuna-image"
                              src="resource/img/yunav3.png"
                              alt="Foto Yuna"
@@ -71,15 +71,17 @@
                 </div>
             </div>
         </div>
-        <div class="music-player-container">
+        <div class="music-player-container" style="display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
             <audio id="background-music" loop muted>
-                <source src="resource/musik.mp3" type="audio/mpeg">
+                <source id="audio-source" src="" type="audio/mpeg">
                 Browser Anda tidak mendukung elemen audio.
             </audio>
+            <div class="song-controls mt-4 flex justify-center gap-2">
+                <button id="prev-song-btn" type="button" style="margin-right: 1rem;">⏮️ Prev</button>
+                <button id="mute-toggle-button" type="button"><span id="mute-icon">🔇</span></button>
+                <button id="next-song-btn" type="button" style="margin-left: 1rem;">Next ⏭️</button>
+            </div>
         </div>
-        <button id="mute-toggle-button">
-            <span id="mute-icon">🔇</span>
-        </button>
         <p class="text-center text-gray-400 mt-10 text-lg">
             Made with love ❤️ <a href="https://www.instagram.com/neflalabs" target="_blank" class="text-blue-400 hover:text-blue-300 underline">@neflalabs</a>
         </p>
@@ -87,4 +89,4 @@
     <div id="falling-items-container"></div>
     <script src="resource/script.js"></script>
 </body>
-</html> 
+</html>
