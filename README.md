@@ -1,18 +1,18 @@
 # Lunyun Page
 
 Halo! Om nefla disini.. 👋  
-Ini adalah repo **Lunyun Page**, sebuah project kecil-kecilan dikala gabut. Lunyun-page make komponen web standar kayak **HTML, CSS, dan JavaScript**, jadi gampang banget buat diutak-atik. (ini juga jelek banget sih menurut saya hihihi..)
+Ini adalah repo **Lunyun Page**, sebuah project landing page sederhana yang dibuat dengan komponen web standar: **HTML, CSS, dan JavaScript**. Mudah diutak-atik dan cocok buat showcase link Bot Om.
 
-## Buat apa sih Lunyun Page?
-Buat landing page yang simple, responsif. khususnya disini sebagai "sejenis" linktree buat kompulan Bot Om.
+## Tujuan Lunyun Page
+Menyediakan landing page yang simpel dan responsif, mirip "linktree" untuk kumpulan bot atau profil.
 
-## Teknologi yang Dipakai
-- **HTML**: Struktur dasar web.
-- **CSS**: Styling biasa aja, glowing-glowing dikit biar alay.
-- **JavaScript**: Dekorasi bunga sama eskrim.
-- **Dockerfile**: Buat yang mau deploy pake Docker, gampang tinggal build aja.
+## Teknologi yang Digunakan
+- **HTML**: Struktur utama halaman (`index.html`)
+- **CSS**: Styling di folder `css/`, efek glowing biar lebih menarik
+- **JavaScript**: Interaksi dan dekorasi di folder `js/`
+- **Dockerfile**: Untuk containerisasi dan deployment mudah
 
-## Cara Jalanin Project Ini
+## Cara Menjalankan Project
 
 ### 1. Clone Repo
 ```bash
@@ -21,42 +21,43 @@ cd lunyun-page
 ```
 
 ### 2. Jalankan Secara Lokal
-Cukup buka file `index.html` di browser favorit kamu.  
-Atau kalau mau pake live server (rekomendasi, biar auto-reload):
+Buka file `index.html` langsung di browser untuk melihat halaman.  
+Jika ingin auto-reload saat mengedit kode, gunakan live-server (hanya untuk pengembangan lokal):
 
 ```bash
-# Pastikan sudah install live-server (npm install -g live-server)
-live-server
+# Install live-server jika belum ada (npm install -g live-server)
+live-server .
 ```
+Akses di `http://localhost:8080` (default live-server port)
 
 ### 3. Deploy dengan Docker
-Kalau kamu mau langsung deploy di server pakai Docker:
+Untuk deployment, gunakan Docker untuk membangun dan menjalankan container:
+
 ```bash
 docker build -t lunyun-page .
 docker run -p 8080:80 lunyun-page
 ```
 Akses di `http://localhost:8080`
 
-## Folder & Struktur File
+## Struktur Folder & File
 
-- `index.html` — Halaman utama
-- `assets/` — Gambar, icon, atau file statik lainnya. (gambar make aspek 1:1)
-- `css/` — File stylesheet
-- `js/` — Script JavaScript
-- `Dockerfile` — Buat containerisasi
+- `index.html` — Halaman utama landing page
+- `assets/` — Gambar, ikon, dan file statis lain (gunakan aspek rasio 1:1)
+- `css/` — File stylesheet utama (`style.css`)
+- `js/` — Script JavaScript (`main.js`)
+- `Dockerfile` — Konfigurasi container
 
 ## Kontribusi
 
-Punya ide atau mau bantuin?  
-Silakan fork, pull request, atau buka issue ya!  
-Diskusi santai juga boleh banget.
+Punya ide atau ingin bantu?  
+Silakan fork, pull request, atau buka issue. Diskusi santai juga boleh!
 
 ## License
 
-Repo ini pakai **GNU GPLv3**.  
-Bebas dipakai, diubah, dan disebarluaskan, asal tetap share source code perubahan kamu juga.  
-Cek [LICENSE](LICENSE) buat detailnya.
+Repo ini menggunakan **GNU GPLv3**.  
+Bebas dipakai, diubah, dan disebarluaskan, asal share juga perubahan source code kamu.  
+Cek [LICENSE](LICENSE) untuk detail.
 
 ---
 
-2025 - @neflalabs
+2025 - @neflalabsTrigger GitHub Actions workflow
