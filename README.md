@@ -20,17 +20,7 @@ git clone https://github.com/neflalabs/lunyun-page.git
 cd lunyun-page
 ```
 
-### 2. Jalankan Secara Lokal
-Buka file `index.html` langsung di browser untuk melihat halaman.  
-Jika ingin auto-reload saat mengedit kode, gunakan live-server (hanya untuk pengembangan lokal):
-
-```bash
-# Install live-server jika belum ada (npm install -g live-server)
-live-server .
-```
-Akses di `http://localhost:8080` (default live-server port)
-
-### 3. Deploy dengan Docker
+### 2. Deploy dengan Docker
 Untuk deployment, gunakan Docker untuk membangun dan menjalankan container:
 
 ```bash
@@ -60,4 +50,4 @@ Cek [LICENSE](LICENSE) untuk detail.
 
 ---
 
-2025 - @neflalabsTrigger GitHub Actions workflow
+2025 - @neflalabs
