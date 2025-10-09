@@ -1,0 +1,16 @@
+.git
+.github/
+.github/**
+.gitignore
+Dockerfile
+compose.yaml
+README.md
+*.md
+*.yml
+.vscode/
+node_modules/
+download-assets.sh
+*.log
+tmp/
+dist/
+tests/
