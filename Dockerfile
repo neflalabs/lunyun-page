@@ -6,7 +6,7 @@ WORKDIR /usr/share/nginx/html
 # Adjust paths if you reorganize files later
 COPY index.html /usr/share/nginx/html/
 COPY resource /usr/share/nginx/html/resource
-COPY img /usr/share/nginx/html/img
+
 
 # Configure nginx: gzip + long-lived cache for static assets
 RUN printf '%s\n' "server {" \
