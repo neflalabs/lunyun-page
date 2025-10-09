@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (fallingItemsContainer && !prefersReducedMotion) {
     const isSmall = window.innerWidth < 640;
     const numItems = isSmall ? 12 : 40; // fewer items on mobile
-    const emojis = ['338', '366'];
+      const emojis = ['🌸', '🍦'];
 
     const fragment = document.createDocumentFragment();
     for (let i = 0; i < numItems; i++) {
